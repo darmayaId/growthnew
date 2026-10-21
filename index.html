@@ -1,68 +1,90 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrowthPath - 5-Day Personal Growth Challenge</title>
-    <!-- PWA Configuration for App Experience -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="GrowthPath">
-    <meta name="theme-color" content="#4f46e5">
-    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-scrollbar">
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 w-full glass border-b border-slate-200">
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 w-full glass border-b border-slate-200/80 transition-all">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="p-2 bg-indigo-600 text-white rounded-lg shadow-md">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-gradient-to-tr from-indigo-600 to-violet-600 text-white rounded-xl shadow-md shadow-indigo-200">
                     <i data-lucide="sprout" class="w-6 h-6"></i>
                 </div>
-                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">GrowthPath</span>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">GrowthPath</span>
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-slate-400 block -mt-1">5-Day Challenge</span>
+                </div>
             </div>
-            <nav class="hidden md:flex space-x-6 font-medium text-sm text-slate-600">
-                <a href="#modules" class="hover:text-indigo-600 transition">Modul 5 Hari</a>
-                <a href="#habits" class="hover:text-indigo-600 transition">Habit Tracker</a>
-                <a href="#quiz" class="hover:text-indigo-600 transition">Refleksi & Kuis</a>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600">
+                <a href="#modules" class="hover:text-indigo-600 transition flex items-center space-x-1.5">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span>Modul Pembelajaran</span>
+                </a>
+                <a href="#habits" class="hover:text-indigo-600 transition flex items-center space-x-1.5">
+                    <i data-lucide="check-square" class="w-4 h-4"></i>
+                    <span>Habit & Jurnal</span>
+                </a>
+                <a href="#quiz" class="hover:text-indigo-600 transition flex items-center space-x-1.5">
+                    <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                    <span>Evaluasi (25 Soal)</span>
+                </a>
             </nav>
-            <button onclick="scrollToSection('modules')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">
-                Mulai Challenge
+
+            <button onclick="scrollToSection('modules')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition shadow-sm hover:shadow flex items-center space-x-2">
+                <span>Mulai Akselerasi</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-12 md:py-20 bg-gradient-to-b from-indigo-50/50 to-slate-50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 font-medium text-xs rounded-full mb-4">
-                🚀 Challenge Pengembangan Diri 5 Hari
+    <section class="py-12 md:py-16 bg-gradient-to-b from-indigo-50/70 via-slate-50 to-slate-50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-indigo-100/80 border border-indigo-200 text-indigo-700 font-semibold text-xs rounded-full mb-4 shadow-sm">
+                <i data-lucide="zap" class="w-3.5 h-3.5 fill-indigo-600 text-indigo-600"></i>
+                <span>Program Akselerasi Pertumbuhan Diri 5 Hari</span>
             </span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-                Ubah Kebiasaan dan Tingkatkan Potensi Diri Anda Secara Berkelanjutan
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                Ubah Kebiasaan & Bangun Potensi Diri Berkelanjutan
             </h1>
-            <p class="text-base md:text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-                Kurikulum praktis berbasis aksi harian untuk membangun mindset positif, mengelola waktu, melatih kecerdasan emosional, dan mencapai konsistensi.
+            <p class="text-sm md:text-base text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Latih pola pikir, manajemen waktu, resiliensi mental, dan konsistensi melalui kurikulum harian terstruktur, pelacakan aksi langsung, serta tes evaluasi kesiapan komprehensif.
             </p>
             
             <!-- Daily Quote Card -->
-            <div id="quote-card" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 max-w-xl mx-auto text-left relative overflow-hidden">
-                <div class="absolute -right-4 -bottom-4 text-slate-100 -z-0">
+            <div id="quote-card" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 max-w-xl mx-auto text-left relative overflow-hidden group hover:border-indigo-200 transition">
+                <div class="absolute -right-4 -bottom-4 text-slate-100 group-hover:text-indigo-50 transition -z-0">
                     <i data-lucide="quote" class="w-24 h-24"></i>
                 </div>
-                <div class="relative z-10">
-                    <p id="quote-text" class="text-slate-700 italic mb-2 font-medium">"Kemenangan pertama dan terbesar adalah menaklukkan diri sendiri."</p>
-                    <p id="quote-author" class="text-xs text-indigo-600 font-semibold">— Plato</p>
+                <div class="relative z-10 flex items-start space-x-4">
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p id="quote-text" class="text-slate-700 italic mb-2 font-medium text-sm md:text-base">"Kemenangan pertama dan terbesar adalah menaklukkan diri sendiri."</p>
+                        <p id="quote-author" class="text-xs text-indigo-600 font-bold">— Plato</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,339 +93,547 @@
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-4 py-8 space-y-16 flex-grow">
 
-        <!-- Modul Pembelajaran 5 Hari -->
+        <!-- 1. Modul Pembelajaran -->
         <section id="modules">
-            <div class="mb-8 text-center md:text-left">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Materi & Modul 5 Hari</h2>
-                <p class="text-slate-600 text-sm md:text-base">Pilih hari untuk mempelajari materi dan jalankan tugas aksinya.</p>
+            <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between">
+                <div>
+                    <div class="flex items-center space-x-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-1">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        <span>Tahap 1</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900">Kurikulum & Modul Pembelajaran</h2>
+                    <p class="text-slate-600 text-xs md:text-sm">Klik pada modul hari di bawah untuk mempelajari materi dan panduan aksi harian.</p>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <!-- Day 1 Card -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Cards Hari 1 - 5 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-200 transition flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold mb-3">01</div>
-                        <h3 class="font-bold text-slate-800 text-base mb-1">Mindset & Self-Awareness</h3>
-                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Mengenal diri, pola pikir Growth Mindset, dan analisis SWOT personal.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 bg-rose-100 text-rose-600 font-extrabold rounded-xl flex items-center justify-center text-xs">01</span>
+                            <span class="text-[10px] font-semibold text-slate-400">Hari ke-1</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 group-hover:text-indigo-600 transition">Mindset & Self-Awareness</h3>
+                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Mengenal potensi diri, Growth Mindset, dan analisis SWOT personal.</p>
                     </div>
-                    <button onclick="openModal(1)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                        Buka Materi
+                    <button onclick="openModal(1)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition flex items-center justify-center space-x-1.5">
+                        <span>Buka Modul</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
-                <!-- Day 2 Card -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-200 transition flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold mb-3">02</div>
-                        <h3 class="font-bold text-slate-800 text-base mb-1">Goal Setting & Micro-Habits</h3>
-                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Menentukan target SMART dan membangun kebiasaan kecil konsisten.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 bg-amber-100 text-amber-600 font-extrabold rounded-xl flex items-center justify-center text-xs">02</span>
+                            <span class="text-[10px] font-semibold text-slate-400">Hari ke-2</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 group-hover:text-indigo-600 transition">Goal Setting & Micro-Habits</h3>
+                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Perancangan target SMART dan membangun kebiasaan kecil konsisten.</p>
                     </div>
-                    <button onclick="openModal(2)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                        Buka Materi
+                    <button onclick="openModal(2)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition flex items-center justify-center space-x-1.5">
+                        <span>Buka Modul</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
-                <!-- Day 3 Card -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-200 transition flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mb-3">03</div>
-                        <h3 class="font-bold text-slate-800 text-base mb-1">Time & Energy Management</h3>
-                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Teknik Pomodoro, Aturan 80/20, dan mengatasi rasa menunda.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 bg-blue-100 text-blue-600 font-extrabold rounded-xl flex items-center justify-center text-xs">03</span>
+                            <span class="text-[10px] font-semibold text-slate-400">Hari ke-3</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 group-hover:text-indigo-600 transition">Time & Energy Management</h3>
+                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Teknik Pomodoro, Aturan 80/20, dan eliminasi prokrastinasi.</p>
                     </div>
-                    <button onclick="openModal(3)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                        Buka Materi
+                    <button onclick="openModal(3)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition flex items-center justify-center space-x-1.5">
+                        <span>Buka Modul</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
-                <!-- Day 4 Card -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-200 transition flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center font-bold mb-3">04</div>
-                        <h3 class="font-bold text-slate-800 text-base mb-1">Emotional Resilience</h3>
-                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Melatih kecerdasan emosional, rasa syukur, dan kendali diri.</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 bg-emerald-100 text-emerald-600 font-extrabold rounded-xl flex items-center justify-center text-xs">04</span>
+                            <span class="text-[10px] font-semibold text-slate-400">Hari ke-4</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 group-hover:text-indigo-600 transition">Emotional Resilience</h3>
+                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">Circle of Control, jurnal syukur, dan regulasi resiliensi mental.</p>
                     </div>
-                    <button onclick="openModal(4)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                        Buka Materi
+                    <button onclick="openModal(4)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition flex items-center justify-center space-x-1.5">
+                        <span>Buka Modul</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
-                <!-- Day 5 Card -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-200 transition flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold mb-3">05</div>
-                        <h3 class="font-bold text-slate-800 text-base mb-1">Sustainable Growth</h3>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 bg-purple-100 text-purple-600 font-extrabold rounded-xl flex items-center justify-center text-xs">05</span>
+                            <span class="text-[10px] font-semibold text-slate-400">Hari ke-5</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 group-hover:text-indigo-600 transition">Sustainable Growth</h3>
                         <p class="text-xs text-slate-500 mb-4 line-clamp-2">Evaluasi progres, desain lingkungan pendukung, dan komitmen.</p>
                     </div>
-                    <button onclick="openModal(5)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                        Buka Materi
+                    <button onclick="openModal(5)" class="w-full py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition flex items-center justify-center space-x-1.5">
+                        <span>Buka Modul</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Habit Tracker -->
-        <section id="habits" class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+        <!-- 2. Habit Tracker & Jurnal Harian -->
+        <section id="habits" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                 <div>
-                    <h2 class="text-xl md:text-2xl font-bold text-slate-900">Interactive Habit Tracker</h2>
-                    <p class="text-slate-600 text-sm">Tandai aksi harian Anda untuk melihat persentase perkembangan challenge.</p>
-                </div>
-                <div class="mt-4 md:mt-0 flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                    <div class="text-right">
-                        <span class="text-xs text-slate-500 font-medium block">Progres Total</span>
-                        <span id="progress-percent" class="text-lg font-bold text-indigo-600">0%</span>
+                    <div class="flex items-center space-x-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-1">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Tahap 2</span>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
-                        <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-900">Habit Tracker & Jurnal Harian</h2>
+                    <p class="text-slate-600 text-xs md:text-sm">Centang kebiasaan harian yang telah diselesaikan dan catat jurnal refleksi Anda.</p>
+                </div>
+
+                <div class="flex items-center space-x-4 bg-slate-50 p-3.5 rounded-2xl border border-slate-200/60 self-start md:self-auto">
+                    <div class="text-right">
+                        <span class="text-[10px] text-slate-500 font-semibold uppercase block">Total Progres</span>
+                        <span id="progress-percent" class="text-xl font-extrabold text-indigo-600">0%</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 shadow-inner">
+                        <i data-lucide="award" class="w-6 h-6"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Progress Bar -->
-            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden mb-8">
-                <div id="progress-bar" class="bg-indigo-600 h-full w-0 transition-all duration-500"></div>
+            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden mb-8 p-0.5">
+                <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 to-violet-600 h-full w-0 rounded-full transition-all duration-500 shadow-sm"></div>
             </div>
 
-            <!-- Habit Checklist Grid -->
-            <div id="habit-list" class="space-y-3">
-                <!-- Dynamically generated via JS -->
-            </div>
+            <!-- Habit List -->
+            <div id="habit-list" class="space-y-4"></div>
         </section>
 
-        <!-- Refleksi & Self Assessment -->
-        <section id="quiz" class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-6 md:p-8 rounded-2xl">
-            <div class="max-w-2xl">
-                <h2 class="text-2xl font-bold mb-2">Evaluasi Kesiapan Pertumbuhan Diri</h2>
-                <p class="text-indigo-200 text-sm mb-6">Jawab 3 pertanyaan singkat ini untuk mengetahui fokus area pengembangan diri Anda selanjutnya.</p>
-                
-                <form id="quiz-form" onsubmit="calculateQuiz(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-indigo-200 mb-1">1. Bagaimana Anda merespons kegagalan atau kendala?</label>
-                        <select id="q1" class="w-full bg-slate-800 border border-slate-700 text-white p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                            <option value="1">Sering patah semangat & menyalahkan keadaan</option>
-                            <option value="2">Mencoba bangkit tetapi masih sering ragu</option>
-                            <option value="3">Melihatnya sebagai pelajaran (Growth Mindset)</option>
-                        </select>
-                    </div>
+        <!-- 3. Evaluasi Kesiapan (25 Soal) -->
+        <section id="quiz" class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+            <div class="mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-1">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                    <span>Tahap 3</span>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Evaluasi Kesiapan Pertumbuhan Diri (25 Soal)</h2>
+                <p class="text-slate-600 text-xs md:text-sm">Jawab 5 soal refleksi per hari di bawah ini untuk mengukur tingkat kesiapan dan pemahaman Anda secara komprehensif.</p>
+            </div>
 
-                    <div>
-                        <label class="block text-xs font-semibold text-indigo-200 mb-1">2. Berapa sering Anda menunda pekerjaan penting?</label>
-                        <select id="q2" class="w-full bg-slate-800 border border-slate-700 text-white p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                            <option value="1">Sangat sering (Hampir setiap hari)</option>
-                            <option value="2">Kadang-kadang, tergantung suasana hati</option>
-                            <option value="3">Jarang, saya pakai teknik manajemen waktu</option>
-                        </select>
-                    </div>
+            <!-- Day Tabs -->
+            <div class="flex overflow-x-auto space-x-2 pb-3 mb-6 border-b border-slate-200 custom-scrollbar">
+                <button onclick="switchQuizTab(1)" id="quiz-tab-1" class="quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition flex items-center space-x-2">
+                    <span>Hari 1: Mindset</span>
+                </button>
+                <button onclick="switchQuizTab(2)" id="quiz-tab-2" class="quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center space-x-2">
+                    <span>Hari 2: Goals</span>
+                </button>
+                <button onclick="switchQuizTab(3)" id="quiz-tab-3" class="quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center space-x-2">
+                    <span>Hari 3: Waktu</span>
+                </button>
+                <button onclick="switchQuizTab(4)" id="quiz-tab-4" class="quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center space-x-2">
+                    <span>Hari 4: Emosi</span>
+                </button>
+                <button onclick="switchQuizTab(5)" id="quiz-tab-5" class="quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center space-x-2">
+                    <span>Hari 5: Konsistensi</span>
+                </button>
+            </div>
 
-                    <div>
-                        <label class="block text-xs font-semibold text-indigo-200 mb-1">3. Seberapa rutin Anda mengevaluasi target diri?</label>
-                        <select id="q3" class="w-full bg-slate-800 border border-slate-700 text-white p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                            <option value="1">Tidak pernah/Sangat jarang</option>
-                            <option value="2">Hanya di awal tahun/bulan</option>
-                            <option value="3">Rutin mingguan/harian</option>
-                        </select>
-                    </div>
+            <form id="quiz-form" onsubmit="calculateQuiz(event)" class="space-y-6">
+                <div id="quiz-questions-container" class="space-y-4"></div>
 
-                    <button type="submit" class="w-full mt-4 bg-indigo-500 text-white font-semibold py-3 rounded-lg hover:bg-indigo-600 transition shadow-lg text-sm">
-                        Lihat Rekomendasi
+                <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-2 text-xs text-slate-500">
+                        <i data-lucide="info" class="w-4 h-4 text-indigo-500 shrink-0"></i>
+                        <span>Pastikan telah memilih opsi jawaban pada seluruh tab Hari 1 - 5.</span>
+                    </div>
+                    <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-bold rounded-xl transition shadow-md hover:shadow-indigo-200 flex items-center justify-center space-x-2">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                        <span>Kalkulasi Skor Evaluasi</span>
                     </button>
-                </form>
+                </div>
+            </form>
 
-                <div id="quiz-result" class="hidden mt-6 p-4 bg-slate-800/80 border border-indigo-500/30 rounded-xl">
-                    <h4 class="font-bold text-indigo-400 text-sm mb-1">Rekomendasi Area Fokus Anda:</h4>
-                    <p id="quiz-suggestion" class="text-xs text-slate-300 leading-relaxed"></p>
+            <!-- Quiz Results Output Section -->
+            <div id="quiz-result" class="hidden mt-8 p-6 md:p-8 bg-slate-900 text-white rounded-3xl space-y-6 shadow-xl border border-slate-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20 mb-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                            <span>Laporan Hasil Berhasil Dihitung</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Hasil Evaluasi Kesiapan Diri</h3>
+                        <p class="text-xs text-slate-400">Analisis komprehensif berdasarkan 25 soal refleksi harian Anda.</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 text-center sm:text-right min-w-[140px]">
+                        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold block">Skor Total</span>
+                        <span id="quiz-total-score" class="text-3xl font-black text-emerald-400">0%</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Breakdown Skor Per Hari:</h4>
+                    <div id="quiz-breakdown" class="grid grid-cols-2 sm:grid-cols-5 gap-3"></div>
+                </div>
+
+                <div class="p-5 bg-slate-800/60 rounded-2xl border border-slate-700/60 flex items-start space-x-3">
+                    <div class="p-2 bg-indigo-500/20 text-indigo-400 rounded-lg shrink-0 mt-0.5">
+                        <i data-lucide="compass" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs text-indigo-300 uppercase tracking-wider mb-1">Rekomendasi Area Fokus Utama:</h4>
+                        <p id="quiz-recommendation" class="text-xs md:text-sm text-slate-300 leading-relaxed"></p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Modal Pop-up Reader untuk Materi 5 Hari -->
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500 space-y-2">
+            <div class="flex items-center justify-center space-x-2 font-bold text-slate-700">
+                <i data-lucide="sprout" class="w-4 h-4 text-indigo-600"></i>
+                <span>GrowthPath Personal Growth Challenge</span>
+            </div>
+            <p>© 2026 GrowthPath. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Reader Materi Pembelajaran -->
     <div id="material-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-in fade-in duration-200">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/80">
                 <div class="flex items-center space-x-3">
-                    <span id="modal-day-badge" class="px-3 py-1 bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full">Hari 1</span>
-                    <h3 id="modal-title" class="text-lg font-bold text-slate-800">Judul Modul</h3>
+                    <span id="modal-day-badge" class="px-3 py-1 bg-indigo-100 text-indigo-700 font-extrabold text-xs rounded-full">Hari 1</span>
+                    <h3 id="modal-title" class="text-base sm:text-lg font-bold text-slate-900">Judul Modul</h3>
                 </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
+                <button onclick="closeModal()" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200/50 rounded-full transition">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
             
-            <div class="p-6 overflow-y-auto space-y-4 text-slate-700 text-sm leading-relaxed" id="modal-content">
-                <!-- Content inserted via JS -->
-            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-slate-700 text-xs sm:text-sm leading-relaxed custom-scrollbar" id="modal-content"></div>
 
-            <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
-                <button onclick="closeModal()" class="px-5 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition">
-                    Selesai Membaca
+            <div class="p-4 border-t border-slate-100 bg-slate-50/80 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition">
+                    Tutup Modul
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
-        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
-            <p>© 2026 GrowthPath - Platform Pembelajaran Pengembangan Diri 5 Hari.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript Application Logic -->
+    <!-- Application Logic Javascript -->
     <script>
-        // Data Materi 5 Hari
+        // Content Data Modul Hari 1 - 5
         const dayMaterials = {
-            1: {
-                day: "Hari 1",
-                title: "Mindset & Self-Awareness",
-                quote: "Kemenangan pertama dan terbesar adalah menaklukkan diri sendiri. — Plato",
+            1: { 
+                day: "Hari 1", 
+                title: "Mindset & Self-Awareness", 
                 content: `
-                    <h4 class="font-bold text-slate-900 mb-1">1. Fixed Mindset vs Growth Mindset</h4>
-                    <p class="mb-3">Orang dengan <i>Growth Mindset</i> percaya bahwa kecerdasan dan kemampuan dapat dikembangkan melalui dedikasi dan kerja keras. Kegagalan bukanlah akhir, melainkan indikator bahwa kita perlu belajar lebih banyak.</p>
-                    
-                    <h4 class="font-bold text-slate-900 mb-1">2. Analisis SWOT Diri</h4>
-                    <ul class="list-disc pl-5 space-y-1 mb-4 text-xs">
-                        <br><b>Strengths (Kekuatan):</b> Apa keahlian terbaik Anda saat ini?
-                        <br><b>Weaknesses (Kelemahan):</b> Kebiasaan apa yang paling sering menghambat Anda?
-                        <br><b>Opportunities (Peluang):</b> Sumber daya apa yang bisa Anda manfaatkan?
-                        <br><b>Threats (Ancaman):</b> Gangguan utama apa yang mengalihkan perhatian Anda?
-                    </ul>
-
-                    <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-900 rounded-r-lg text-xs">
-                        <b>🎯 Aksi Hari Ini:</b> Tuliskan 3 kekuatan utama Anda dan 1 kebiasaan buruk yang ingin dihilangkan di catatan Anda.
+                    <p class="mb-3 text-slate-600">Langkah pertama dalam transformasi diri adalah membangun kesadaran penuh akan pola pikir saat ini serta mengenali kekuatan dan kelemahan personal.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">1. Fixed Mindset vs Growth Mindset</h4>
+                    <p class="mb-3 text-slate-600">Seseorang dengan <i>Fixed Mindset</i> menganggap bakat bersifat permanen. Sebaliknya, <i>Growth Mindset</i> meyakini bahwa kemampuan dapat terus dikembangkan melalui latihan konsisten dan evaluasi kegagalan.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">2. Analisis SWOT Diri</h4>
+                    <p class="mb-3 text-slate-600">Petakan kelebihan (Strengths), area yang perlu diperbaiki (Weaknesses), peluang pengembangan karier/diri (Opportunities), serta ancaman atau godaan pemicu distraksi (Threats).</p>
+                    <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-950 rounded-r-2xl text-xs sm:text-sm font-medium my-4">
+                        <b>🎯 Panduan Aksi Hari Ini:</b> Tuliskan minimal 3 kekuatan terbesar Anda dan 1 kebiasaan buruk yang ingin dievaluasi pada jurnal harian di bawah.
                     </div>
-                `
+                ` 
             },
-            2: {
-                day: "Hari 2",
-                title: "Goal Setting & Micro-Habits",
-                quote: "Anda tidak naik ke tingkat tujuan Anda, tetapi jatuh ke tingkat sistem Anda. — James Clear",
+            2: { 
+                day: "Hari 2", 
+                title: "Goal Setting & Micro-Habits", 
                 content: `
-                    <h4 class="font-bold text-slate-900 mb-1">1. Aturan Target SMART</h4>
-                    <p class="mb-3">Pastikan target Anda bersifat <b>Specific, Measurable, Achievable, Relevant,</b> dan <b>Time-bound</b>. Daripada berkata "Saya ingin rajin membaca", ubah menjadi "Saya akan membaca 5 halaman buku setiap pukul 07.00 pagi".</p>
-                    
-                    <h4 class="font-bold text-slate-900 mb-1">2. Teknik Habit Stacking</h4>
-                    <p class="mb-3">Tempelkan kebiasaan baru tepat setelah kebiasaan lama yang sudah rutin Anda lakukan.<br><i>Rumus: [Setelah Kebiasaan Lama], [Saya Akan Kebiasaan Baru].</i></p>
-
-                    <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-900 rounded-r-lg text-xs">
-                        <b>🎯 Aksi Hari Ini:</b> Tentukan 1 target bulanan Anda dan tuliskan 1 micro-habit harian sederhana untuk mendukungnya.
+                    <p class="mb-3 text-slate-600">Impian tanpa rencana hanyalah harapan. Modul ini mengajarkan formulasi target spesifik dan penerapan tindakan berskala kecil.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">1. Prinsip Target SMART</h4>
+                    <p class="mb-3 text-slate-600">Pastikan target harian bersifat <i>Specific, Measurable, Achievable, Relevant,</i> dan <i>Time-bound</i> agar jelas tolok ukurnya.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">2. Kekuatan Micro-Habits & Habit Stacking</h4>
+                    <p class="mb-3 text-slate-600">Mulailah dengan tindakan yang membutuhkan durasi kurang dari 2 menit. Kaitkan kebiasaan baru tepat setelah rutinitas harian yang sudah terbentuk (misal: "Setelah menyeduh kopi pagi, saya akan membaca 2 halaman buku").</p>
+                    <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-950 rounded-r-2xl text-xs sm:text-sm font-medium my-4">
+                        <b>🎯 Panduan Aksi Hari Ini:</b> Tetapkan 1 target utama bulan ini beserta 1 micro-habit pendukungnya.
                     </div>
-                `
+                ` 
             },
-            3: {
-                day: "Hari 3",
-                title: "Time & Energy Management",
-                quote: "Masalahnya bukan kurangnya waktu, tetapi kurangnya fokus. — Tim Ferriss",
+            3: { 
+                day: "Hari 3", 
+                title: "Time & Energy Management", 
                 content: `
-                    <h4 class="font-bold text-slate-900 mb-1">1. Prinsip Pareto (80/20)</h4>
-                    <p class="mb-3">80% dari hasil pencapaian Anda berasal dari 20% prioritas utama Anda. Identifikasi tugas penting yang paling berdampak besar dan selesaikan terlebih dahulu.</p>
-
-                    <h4 class="font-bold text-slate-900 mb-1">2. Teknik Pomodoro & Aturan 2-Menit</h4>
-                    <p class="mb-3">Kerjakan tugas secara fokus tanpa distraksi selama 25 menit, lalu istirahat 5 menit. Jika ada tugas kecil yang bisa selesai kurang dari 2 menit, kerjakan detik ini juga tanpa menunda.</p>
-
-                    <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-900 rounded-r-lg text-xs">
-                        <b>🎯 Aksi Hari Ini:</b> Praktikkan minimal 2 sesi Pomodoro (25 menit fokus) saat menyelesaikan tugas tersulit Anda hari ini.
+                    <p class="mb-3 text-slate-600">Manajemen waktu pada hakikatnya adalah manajemen fokus dan energi tubuh manusia.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">1. Prinsip Pareto (Aturan 80/20)</h4>
+                    <p class="mb-3 text-slate-600">Fokus pada 20% tugas paling penting yang menghasilkan 80% dampak besar bagi kehidupan Anda.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">2. Teknik Pomodoro & Bebas Distraksi</h4>
+                    <p class="mb-3 text-slate-600">Bekerja penuh tanpa membuka media sosial selama 25 menit, lalu diselingi istirahat 5 menit untuk menjaga kesegaran pikiran.</p>
+                    <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-950 rounded-r-2xl text-xs sm:text-sm font-medium my-4">
+                        <b>🎯 Panduan Aksi Hari Ini:</b> Selesaikan minimal 2 sesi fokus Pomodoro tanpa distraksi notifikasi HP.
                     </div>
-                `
+                ` 
             },
-            4: {
-                day: "Hari 4",
-                title: "Emotional Intelligence & Resilience",
-                quote: "Anda tidak bisa mengontrol apa yang terjadi di luar, tetapi Anda bisa mengontrol respons di dalam. — Epictetus",
+            4: { 
+                day: "Hari 4", 
+                title: "Emotional Resilience & Mindfulness", 
                 content: `
-                    <h4 class="font-bold text-slate-900 mb-1">1. Lingkaran Kendali (Circle of Control)</h4>
-                    <p class="mb-3">Fokuskan energi Anda pada hal-hal yang dapat Anda kendalikan (pikiran, tindakan, usaha, dan sikap Anda) dan lepaskan hal di luar kendali Anda (opini orang lain, situasi masa lalu).</p>
-
-                    <h4 class="font-bold text-slate-900 mb-1">2. Melatih Gratitude (Rasa Syukur)</h4>
-                    <p class="mb-3">Praktik bersyukur secara ilmiah terbukti menurunkan stres dan meningkatkan kejelasan mental saat mengambil keputusan penting.</p>
-
-                    <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-900 rounded-r-lg text-xs">
-                        <b>🎯 Aksi Hari Ini:</b> Tuliskan 3 hal kecil yang Anda syukuri hari ini serta 1 pelajaran berharga dari kesalahan masa lalu.
+                    <p class="mb-3 text-slate-600">Ketahanan emosional menentukan seberapa cepat Anda bangkit dari rintangan dan tekanan.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">1. Lingkaran Kendali (Circle of Control)</h4>
+                    <p class="mb-3 text-slate-600">Pisahkan hal-hal yang berada dalam kendali Anda (respon, keputusan, tindakan) dari hal di luar kendali (sikap orang lain, cuaca, kejadian masa lalu).</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">2. Jurnal Syukur (Gratitude Journal)</h4>
+                    <p class="mb-3 text-slate-600">Menuliskan hal-hal kecil yang disyukuri terbukti secara ilmiah mampu meredakan hormon stres dan meningkatkan kejernihan berpikir.</p>
+                    <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-950 rounded-r-2xl text-xs sm:text-sm font-medium my-4">
+                        <b>🎯 Panduan Aksi Hari Ini:</b> Tuliskan 3 hal kecil yang disyukuri dan pemetaan kendali atas masalah saat ini.
                     </div>
-                `
+                ` 
             },
-            5: {
-                day: "Hari 5",
-                title: "Sustainable Growth & Consistency",
-                quote: "Konsistensi adalah apa yang mengubah rata-rata menjadi luar biasa.",
+            5: { 
+                day: "Hari 5", 
+                title: "Sustainable Growth & Consistency", 
                 content: `
-                    <h4 class="font-bold text-slate-900 mb-1">1. Evaluasi & Desain Lingkungan</h4>
-                    <p class="mb-3">Lingkungan Anda sangat menentukan keberhasilan kebiasaan Anda. Atur meja kerja, batasi notifikasi HP, dan kelilingi diri dengan orang-orang yang mendukung pertumbuhan Anda.</p>
-
-                    <h4 class="font-bold text-slate-900 mb-1">2. Menjaga Momentum</h4>
-                    <p class="mb-3">Jangan pernah melewatkan kebiasaan dua kali berturut-turut. Jika hari ini Anda terlewat, pastikan besok Anda kembali ke jalur.</p>
-
-                    <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-900 rounded-r-lg text-xs">
-                        <b>🎯 Aksi Hari Ini:</b> Tandai semua checklist Habit Tracker Anda di aplikasi ini dan bagikan pencapaian Anda!
+                    <p class="mb-3 text-slate-600">Pertumbuhan yang bertahan lama dibentuk oleh sistem lingkungan yang mendukung dan komitmen jangka panjang.</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">1. Desain Lingkungan Kerja</h4>
+                    <p class="mb-3 text-slate-600">Kurangi gesekan untuk kebiasaan baik (seperti menyiapkan meja sebelum tidur) dan perbesar hambatan untuk kebiasaan buruk (seperti menjauhkan ponsel dari kasur).</p>
+                    <h4 class="font-bold text-slate-900 text-sm mb-1">2. Aturan Jangan Melewatkan Dua Kali</h4>
+                    <p class="mb-3 text-slate-600">Jika Anda melewatkan satu jadwal kebiasaan karena keadaan darurat, pastikan untuk tidak melewatkannya di hari kedua secara berturut-turut.</p>
+                    <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 text-indigo-950 rounded-r-2xl text-xs sm:text-sm font-medium my-4">
+                        <b>🎯 Panduan Aksi Hari Ini:</b> Tinjau progres habit tracker 5 hari Anda dan tuliskan deklarasi komitmen konsistensi.
                     </div>
-                `
+                ` 
             }
         };
 
-        // Data Habit Checklist
+        // Data Habits Harian
         const habitsData = [
-            { id: 1, day: "Hari 1", text: "Menuliskan 3 Kekuatan & 1 Kebiasaan Buruk (SWOT)" },
-            { id: 2, day: "Hari 2", text: "Membuat 1 Target SMART & Menentukan Micro-Habit" },
-            { id: 3, day: "Hari 3", text: "Menjalankan 2 Sesi Pomodoro (25 Menit Fokus) Tanpa HP" },
-            { id: 4, day: "Hari 4", text: "Menuliskan 3 Jurnal Rasa Syukur (Gratitude Journal)" },
-            { id: 5, day: "Hari 5", text: "Mengevaluasi Progres & Menata Lingkungan Kerja" }
+            { id: 1, day: "Hari 1", title: "Mindset & Self-Awareness", text: "Menuliskan 3 Kekuatan & 1 Kebiasaan Buruk pada Jurnal" },
+            { id: 2, day: "Hari 2", title: "Goal Setting & Micro-Habits", text: "Menentukan 1 Target SMART & 1 Micro-Habit Pendukung" },
+            { id: 3, day: "Hari 3", title: "Time & Energy Management", text: "Menjalankan 2 Sesi Pomodoro (25 Menit) Bebas Distraksi" },
+            { id: 4, day: "Hari 4", text: "Emotional Resilience", text: "Mencatat 3 Rasa Syukur & Pemetaan Circle of Control" },
+            { id: 5, day: "Hari 5", text: "Sustainable Growth", text: "Evaluasi Progres 5 Hari & Merapikan Lingkungan Kerja" }
         ];
 
-        // State Habit dari LocalStorage
-        let checkedHabits = JSON.parse(localStorage.getItem('growthpath_habits')) || [];
+        // Data 25 Soal Evaluasi Kesiapan (5 Soal Khusus Per Hari)
+        const quizQuestions = {
+            1: [
+                { id: "d1q1", text: "1. Seberapa yakin Anda bahwa bakat dan kemampuan dasar dapat terus ditingkatkan melalui latihan?", options: [{v:1,t:"Ragu/Tidak yakin"},{v:2,t:"Cukup yakin"},{v:3,t:"Sangat yakin"}] },
+                { id: "d1q2", text: "2. Sudahkah Anda memetakan 3 kekuatan utama dan 1 kelemahan diri secara jujur?", options: [{v:1,t:"Belum sama sekali"},{v:2,t:"Baru secara gambaran umum"},{v:3,t:"Sudah jelas dan tertulis"}] },
+                { id: "d1q3", text: "3. Bagaimana kecenderungan respons Anda ketika menerima kritik konstruktif dari orang lain?", options: [{v:1,t:"Merasa tersinggung/defensif"},{v:2,t:"Cemas namun menerima"},{v:3,t:"Menerima sebagai bahan evaluasi"}] },
+                { id: "d1q4", text: "4. Seberapa sering Anda meluangkan waktu khusus untuk melakukan refleksi diri?", options: [{v:1,t:"Jarang/Hampir tidak pernah"},{v:2,t:"Sebulan sekali"},{v:3,t:"Rutin setiap minggu"}] },
+                { id: "d1q5", text: "5. Bagaimana pandangan Anda saat mengalami kegagalan pada suatu proyek?", options: [{v:1,t:"Bukti kurangnya bakat"},{v:2,t:"Perlu jeda sejenak"},{v:3,t:"Umpan balik proses belajar"}] }
+            ],
+            2: [
+                { id: "d2q1", text: "1. Seberapa jelas dan terukurnya (SMART) target pribadi yang ingin Anda capai dalam 30 hari ke depan?", options: [{v:1,t:"Masih sangat kabur"},{v:2,t:"Cukup jelas tanpa batas waktu"},{v:3,t:"Sangat terukur dan spesifik"}] },
+                { id: "d2q2", text: "2. Apakah kebiasaan baru yang Anda rancang sudah berskala kecil (< 5 menit untuk memulai)?", options: [{v:1,t:"Masih terlalu berat"},{v:2,t:"Sedang"},{v:3,t:"Sangat mudah dilakukan"}] },
+                { id: "d2q3", text: "3. Seberapa efektif Anda mengaitkan kebiasaan baru ke dalam rutinitas lama (Habit Stacking)?", options: [{v:1,t:"Belum dicoba"},{v:2,t:"Sering lupa"},{v:3,t:"Telah berjalan lancar"}] },
+                { id: "d2q4", text: "4. Apakah Anda menuliskan tenggat waktu (deadline) untuk prioritas harian?", options: [{v:1,t:"Tidak pernah"},{v:2,t:"Kadang-kadang"},{v:3,t:"Selalu tercatat"}] },
+                { id: "d2q5", text: "5. Seberapa tinggi tingkat konsistensi Anda mengeksekusi target kecil tanpa menunggu mood?", options: [{v:1,t:"Sangat tergantung mood"},{v:2,t:"Cukup berusaha"},{v:3,t:"Eksekusi sesuai jadwal"}] }
+            ],
+            3: [
+                { id: "d3q1", text: "1. Seberapa sering fokus kerja Anda terganggu oleh notifikasi HP atau media sosial?", options: [{v:1,t:"Sangat sering (> 10x per jam)"},{v:2,t:"Kadang-kadang"},{v:3,t:"Jarang/HP terhening"}] },
+                { id: "d3q2", text: "2. Apakah Anda mempraktikkan ritme kerja fokus interval (seperti Teknik Pomodoro 25 menit)?", options: [{v:1,t:"Belum pernah"},{v:2,t:"Kadang mempraktikkan"},{v:3,t:"Menjadi rutinitas harian"}] },
+                { id: "d3q3", text: "3. Seberapa cepat Anda mendahulukan tugas prioritas utama di pagi hari dibanding tugas sepele?", options: [{v:1,t:"Sering menunda tugas berat"},{v:2,t:"Mencoba sebisanya"},{v:3,t:"Selalu mendahulukan prioritas"}] },
+                { id: "d3q4", text: "4. Apakah Anda rutin mengeliminasi atau mendelegasikan tugas non-prioritas (Aturan 80/20)?", options: [{v:1,t:"Semua dikerjakan sendiri"},{v:2,t:"Cukup memahami"},{v:3,t:"Sangat selektif memilih tugas"}] },
+                { id: "d3q5", text: "5. Bagaimana kualitas manajemen energi dan pola istirahat tubuh Anda sehari-hari?", options: [{v:1,t:"Sering lelah & tidur tidak teratur"},{v:2,t:"Cukup baik"},{v:3,t:"Sangat terjaga & segar"}] }
+            ],
+            4: [
+                { id: "d4q1", text: "1. Seberapa mampu Anda membedakan hal yang berada dalam kendali diri vs di luar kendali?", options: [{v:1,t:"Sering cemas hal luar kendali"},{v:2,t:"Cukup bisa membedakan"},{v:3,t:"Fokus penuh pada hal terjangkau"}] },
+                { id: "d4q2", text: "2. Seberapa rutin Anda mencatat hal-hal kecil yang Anda syukuri setiap harinya?", options: [{v:1,t:"Tidak pernah"},{v:2,t:"Saat ingat saja"},{v:3,t:"Rutin harian"}] },
+                { id: "d4q3", text: "3. Berapa lama waktu yang Anda butuhkan untuk bangkit saat menghadapi hambatan mendadak?", options: [{v:1,t:"Membutuhkan waktu berhari-hari"},{v:2,t:"Beberapa jam"},{v:3,t:"Cepat beradaptasi mencari solusi"}] },
+                { id: "d4q4", text: "4. Bagaimana tingkat kendali Anda terhadap reaksi emosional impulsif saat tertekan?", options: [{v:1,t:"Sering meledak/imfimpulsif"},{v:2,t:"Cukup tertahan"},{v:3,t:"Sangat tenang & rasional"}] },
+                { id: "d4q5", text: "5. Apakah Anda rutin memetik pelajaran positif dari pengalaman tidak menyenangkan?", options: [{v:1,t:"Hanya merasa menyesal"},{v:2,t:"Kadang-kadang"},{v:3,t:"Selalu dijadikan pelajaran"}] }
+            ],
+            5: [
+                { id: "d5q1", text: "1. Seberapa rapi dan kondusif lingkungan fisik/digital Anda dalam mendukung fokus?", options: [{v:1,t:"Berantakan & penuh gangguan"},{v:2,t:"Cukup rapi"},{v:3,t:"Sangat tertata & minim pemicu"}] },
+                { id: "d5q2", text: "2. Jika Anda terlewat menjalankan kebiasaan 1 hari, seberapa cepat Anda kembali ke rutinitas?", options: [{v:1,t:"Berhenti sepenuhnya"},{v:2,t:"Butuh beberapa hari"},{v:3,t:"Keesokan harinya langsung kembali"}] },
+                { id: "d5q3", text: "3. Seberapa rutin Anda melakukan evaluasi menyeluruh atas progres mingguan?", options: [{v:1,t:"Tidak pernah"},{v:2,t:"Jarang"},{v:3,t:"Terjadwal secara teratur"}] },
+                { id: "d5q4", text: "4. Apakah Anda memiliki sistem pencatatan atau rekan akuntabilitas untuk menjaga komitmen?", options: [{v:1,t:"Tidak ada"},{v:2,t:"Hanya mengingat di pikiran"},{v:3,t:"Ada sistem/pencatatan konsisten"}] },
+                { id: "d5q5", text: "5. Seberapa kuat komitmen Anda untuk terus bertumbuh 1% setiap hari dalam jangka panjang?", options: [{v:1,t:"Masih ragu"},{v:2,t:"Cukup berkomitmen"},{v:3,t:"Sangat berkomitmen tinggi"}] }
+            ]
+        };
 
-        // Render Habit Tracker
+        // State Management LocalStorage
+        let checkedHabits = JSON.parse(localStorage.getItem('gp_habits')) || [];
+        let journalNotes = JSON.parse(localStorage.getItem('gp_notes')) || {};
+        let quizAnswers = JSON.parse(localStorage.getItem('gp_quiz')) || {};
+        let activeQuizTab = 1;
+
+        // Render Habit Tracker List
         function renderHabits() {
             const listEl = document.getElementById('habit-list');
             listEl.innerHTML = '';
 
-            habitsData.forEach(h => {
+            habitsData.forEach((h, idx) => {
+                const dayNum = idx + 1;
                 const isChecked = checkedHabits.includes(h.id);
-                const item = document.createElement('div');
-                item.className = `flex items-center justify-between p-3.5 rounded-xl border transition ${isChecked ? 'bg-indigo-50/60 border-indigo-200' : 'bg-slate-50 border-slate-200'}`;
-                
-                item.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <input type="checkbox" id="habit-${h.id}" ${isChecked ? 'checked' : ''} onchange="toggleHabit(${h.id})" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500 cursor-pointer">
-                        <label for="habit-${h.id}" class="text-xs md:text-sm font-medium ${isChecked ? 'line-through text-slate-400' : 'text-slate-700'} cursor-pointer">
-                            <span class="font-bold text-indigo-600 mr-1">[${h.day}]</span> ${h.text}
-                        </label>
+                const currentNote = journalNotes[dayNum] || '';
+
+                const container = document.createElement('div');
+                container.className = `p-4 sm:p-5 rounded-2xl border transition-all duration-200 ${
+                    isChecked 
+                        ? 'bg-indigo-50/40 border-indigo-200/80 shadow-xs' 
+                        : 'bg-slate-50/80 border-slate-200/60 hover:bg-slate-50'
+                }`;
+
+                container.innerHTML = `
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div class="flex items-start space-x-3">
+                            <div class="pt-0.5">
+                                <input type="checkbox" id="habit-${h.id}" ${isChecked ? 'checked' : ''} onchange="toggleHabit(${h.id})" class="w-5 h-5 text-indigo-600 rounded-lg border-slate-300 focus:ring-indigo-500 cursor-pointer accent-indigo-600 transition">
+                            </div>
+                            <div>
+                                <label for="habit-${h.id}" class="text-xs sm:text-sm font-bold cursor-pointer transition ${isChecked ? 'line-through text-slate-400' : 'text-slate-800'}">
+                                    <span class="text-indigo-600 mr-1.5">[${h.day}]</span> ${h.text}
+                                </label>
+                                <p class="text-[11px] text-slate-400 font-medium">${h.title}</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${isChecked ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-200 text-slate-600'}">
+                            ${isChecked ? 'Selesai' : 'Belum'}
+                        </span>
+                    </div>
+                    <div class="pl-8">
+                        <textarea id="note-day-${dayNum}" oninput="saveNote(${dayNum})" placeholder="Catat refleksi, hambatan, atau hasil Aksi ${h.day}..." class="w-full bg-white p-3 rounded-xl border border-slate-200 text-xs text-slate-700 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none resize-y min-h-[60px] transition shadow-2xs">${currentNote}</textarea>
                     </div>
                 `;
-                listEl.appendChild(item);
+                listEl.appendChild(container);
             });
 
             updateProgressBar();
         }
 
-        // Toggle Checkbox Status
         function toggleHabit(id) {
             if (checkedHabits.includes(id)) {
                 checkedHabits = checkedHabits.filter(item => item !== id);
             } else {
                 checkedHabits.push(id);
             }
-            localStorage.setItem('growthpath_habits', JSON.stringify(checkedHabits));
+            localStorage.setItem('gp_habits', JSON.stringify(checkedHabits));
             renderHabits();
         }
 
-        // Update Progress Bar & Percentage
+        function saveNote(day) {
+            journalNotes[day] = document.getElementById(`note-day-${day}`).value;
+            localStorage.setItem('gp_notes', JSON.stringify(journalNotes));
+        }
+
         function updateProgressBar() {
             const percent = Math.round((checkedHabits.length / habitsData.length) * 100);
             document.getElementById('progress-bar').style.width = `${percent}%`;
             document.getElementById('progress-percent').innerText = `${percent}%`;
         }
 
-        // Modal Functions
+        // Quiz Logic & Tabs
+        function switchQuizTab(day) {
+            activeQuizTab = day;
+            document.querySelectorAll('.quiz-tab').forEach((btn, idx) => {
+                const dayNum = idx + 1;
+                if (dayNum === day) {
+                    btn.className = "quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-indigo-600 text-white shadow-sm transition flex items-center space-x-2";
+                } else {
+                    btn.className = "quiz-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center space-x-2";
+                }
+            });
+            renderQuizQuestions();
+        }
+
+        function renderQuizQuestions() {
+            const container = document.getElementById('quiz-questions-container');
+            container.innerHTML = '';
+
+            quizQuestions[activeQuizTab].forEach(q => {
+                const savedVal = quizAnswers[q.id] || 1;
+                const qBox = document.createElement('div');
+                qBox.className = "p-4 bg-slate-50/80 border border-slate-200/80 rounded-2xl space-y-3";
+                
+                let optionsHTML = '';
+                q.options.forEach(opt => {
+                    const isSelected = savedVal == opt.v;
+                    optionsHTML += `
+                        <label class="flex items-center space-x-2.5 text-xs text-slate-700 cursor-pointer bg-white p-3 rounded-xl border ${isSelected ? 'border-indigo-500 bg-indigo-50/20 text-indigo-900 font-semibold' : 'border-slate-200/80 hover:border-slate-300'} transition">
+                            <input type="radio" name="${q.id}" value="${opt.v}" ${isSelected ? 'checked' : ''} onchange="saveQuizAnswer('${q.id}', ${opt.v})" class="text-indigo-600 focus:ring-indigo-500">
+                            <span>${opt.t}</span>
+                        </label>
+                    `;
+                });
+
+                qBox.innerHTML = `
+                    <p class="text-xs sm:text-sm font-bold text-slate-800">${q.text}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">${optionsHTML}</div>
+                `;
+                container.appendChild(qBox);
+            });
+        }
+
+        function saveQuizAnswer(qId, value) {
+            quizAnswers[qId] = value;
+            localStorage.setItem('gp_quiz', JSON.stringify(quizAnswers));
+            renderQuizQuestions();
+        }
+
+        function calculateQuiz(e) {
+            e.preventDefault();
+            let totalEarned = 0;
+            let dayScores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+            for (let day = 1; day <= 5; day++) {
+                let dayEarned = 0;
+                quizQuestions[day].forEach(q => {
+                    dayEarned += parseInt(quizAnswers[q.id] || 1);
+                });
+                dayScores[day] = Math.round((dayEarned / 15) * 100);
+                totalEarned += dayEarned;
+            }
+
+            const overallPercent = Math.round((totalEarned / 75) * 100);
+            document.getElementById('quiz-total-score').innerText = `${overallPercent}%`;
+
+            const breakdownContainer = document.getElementById('quiz-breakdown');
+            breakdownContainer.innerHTML = '';
+            
+            const dayNames = ["Mindset", "Goals", "Waktu", "Emosi", "Konsistensi"];
+            for (let d = 1; d <= 5; d++) {
+                const bBox = document.createElement('div');
+                const score = dayScores[d];
+                const colorClass = score >= 80 ? 'text-emerald-400 border-emerald-500/20' : score >= 60 ? 'text-amber-400 border-amber-500/20' : 'text-rose-400 border-rose-500/20';
+                
+                bBox.className = `bg-slate-800/80 p-3 rounded-xl border ${colorClass} text-center space-y-1`;
+                bBox.innerHTML = `
+                    <span class="text-[10px] text-slate-400 uppercase font-semibold block">Hari ${d}: ${dayNames[d-1]}</span>
+                    <span class="text-lg font-black ${score >= 80 ? 'text-emerald-400' : score >= 60 ? 'text-amber-400' : 'text-rose-400'}">${score}%</span>
+                `;
+                breakdownContainer.appendChild(bBox);
+            }
+
+            let lowestDay = 1;
+            let minScore = dayScores[1];
+            for (let d = 2; d <= 5; d++) {
+                if (dayScores[d] < minScore) {
+                    minScore = dayScores[d];
+                    lowestDay = d;
+                }
+            }
+
+            document.getElementById('quiz-recommendation').innerHTML = `
+                Kesiapan total Anda berada di angka <b>${overallPercent}%</b>. Area utama yang membutuhkan fokus perbaikan terbesar adalah <b>Hari ke-${lowestDay} (${dayMaterials[lowestDay].title})</b> dengan capaian <b>${minScore}%</b>. Sangat disarankan untuk mendedikasikan ulang waktu membaca materi Modul Hari ke-${lowestDay} serta mempraktikkan Aksi Harian dan jurnal refleksi terkait secara rutin.
+            `;
+            
+            const resultEl = document.getElementById('quiz-result');
+            resultEl.classList.remove('hidden');
+            resultEl.scrollIntoView({ behavior: 'smooth' });
+            lucide.createIcons();
+        }
+
+        // Modal Functionality
         function openModal(day) {
             const data = dayMaterials[day];
-            if (!data) return;
-
             document.getElementById('modal-day-badge').innerText = data.day;
             document.getElementById('modal-title').innerText = data.title;
             document.getElementById('modal-content').innerHTML = data.content;
-            
             document.getElementById('material-modal').classList.remove('hidden');
         }
 
@@ -411,37 +641,15 @@
             document.getElementById('material-modal').classList.add('hidden');
         }
 
-        // Quiz Calculation
-        function calculateQuiz(e) {
-            e.preventDefault();
-            const q1 = parseInt(document.getElementById('q1').value);
-            const q2 = parseInt(document.getElementById('q2').value);
-            const q3 = parseInt(document.getElementById('q3').value);
-
-            const score = q1 + q2 + q3;
-            let text = "";
-
-            if (score <= 4) {
-                text = "Fokus utama Anda ada pada **Hari 1 (Mindset) & Hari 3 (Manajemen Waktu)**. Bangun pondasi kesadaran diri dan mulai terapkan teknik Pomodoro untuk mengatasi rasa menunda.";
-            } else if (score <= 7) {
-                text = "Anda memiliki pemahaman dasar yang baik! Tingkatkan fokus Anda pada **Hari 2 (Micro-habits) & Hari 4 (Resiliensi Emosional)** untuk membuat kebiasaan konsisten secara perlahan.";
-            } else {
-                text = "Luar biasa! Anda memiliki manajemen diri yang matang. Pertahankan momentum Anda dengan mempelajari **Hari 5 (Sustainable Growth)** dan bantu bagikan ilmu ini ke teman Anda.";
-            }
-
-            document.getElementById('quiz-suggestion').innerText = text;
-            document.getElementById('quiz-result').classList.remove('hidden');
-        }
-
-        // Scroll Helper
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Initialize Lucide Icons & Render
+        // Initialization
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             renderHabits();
+            renderQuizQuestions();
         });
     </script>
 </body>
